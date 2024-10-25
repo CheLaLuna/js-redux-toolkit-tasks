@@ -5,7 +5,7 @@ import Comment from './Comment.jsx';
 const Post = ({ post }) => {
   const author = useSelector((state) => {
     // BEGIN (write your solution here)
-
+    state.users.entities[post.author];
     // END
   });
 

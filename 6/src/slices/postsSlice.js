@@ -11,7 +11,10 @@ const postsSlice = createSlice({
   reducers: {
     setPosts(state, { payload }) {
       // BEGIN (write your solution here)
-
+      state.ids = payload.map(post => post.id);
+      payload.forEach(post => {
+        state.entities[post.id] = post;
+      })
       // END
     },
   },
