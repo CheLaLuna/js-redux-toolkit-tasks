@@ -5,13 +5,12 @@ import Post from './Post.jsx';
 
 const Posts = () => {
   // BEGIN (write your solution here)
-  const postIds = useSelector((state) => state.posts.postIds);
-  const posts = useSelector((state) => state.posts.entities);
+  const { ids, entities } = useSelector((state) => state.postsReducer);
 
   return (
     <div>
-      {postIds.map(postId => (
-        <Post key={postId} post={posts[postId]} />
+      {ids.map((id) => (
+        <Post key={id} post={entities[id]} />
       ))}
     </div>
   );

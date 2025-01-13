@@ -2,27 +2,27 @@ import React from 'react';
 import Spinner from './Spinner.jsx';
 import TodoForm from './TodoForm.jsx';
 // BEGIN (write your solution here)
-import { useGetTasksQuery, useAddTaskMutation, useDeleteTaskMutation } from '../services/tasksApi.js';
+import { useGetTasksQuery, useAddTaskMutation, useRemoveTaskMutation } from '../services/tasksApi.js';
 // END
 
 const TodoBox = () => {
   // BEGIN (write your solution here)
-  const { data: tasks = [], isLoading } = useGetTasksQuery();
-  const [addTask] = useAddTaskMutation();
-  const [deleteTask] = useDeleteTaskMutation();
+  const { data: tasks, error, isLoading } = useGetTasksQuery();
+  const [deleteTask, { error: deleteTaskError, isLoading: isDeletingTask }] = useRemoveTaskMutation();
+  const [addTask, { error: addTaskError, isLoading: isAddingTask }] = useAddTaskMutation();
   // END
 
-  const handleDeleteTask = async (event, id) => {
+  const handleDeleteTask = (event, id) => {
     event.preventDefault();
     // BEGIN (write your solution here)
-    await deleteTask(id);
+    deleteTask(id);
     // END
   };
 
-  const handleSubmitForm = async (event, newTaskText) => {
+  const handleSubmitForm =  (event, newTaskText) => {
     event.preventDefault();
     // BEGIN (write your solution here)
-    await addTask({ text: newTaskText });
+    addTask({ text: newTaskText });
     // END
   };
 

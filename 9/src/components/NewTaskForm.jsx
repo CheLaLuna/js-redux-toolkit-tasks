@@ -14,7 +14,7 @@ const NewTaskForm = () => {
     e.preventDefault();
     if (name.trim()) {
       dispatch(addTask(name));
-      setName(''); // очищаем поле ввода после добавления задачи
+      setName('');
     }
     // END
   };
